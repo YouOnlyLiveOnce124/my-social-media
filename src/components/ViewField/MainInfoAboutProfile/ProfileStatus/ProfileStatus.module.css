@@ -1,0 +1,20 @@
+.field_div {
+  padding: 10px;
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.front_img {
+  width: 600px;
+  height: 450px;
+}
+
+.ava_profile {
+  width: 150px;
+  height: 150px;
+}
+
+.img_looking_job {
+  width: 150px;
+  height: 150px;
+}

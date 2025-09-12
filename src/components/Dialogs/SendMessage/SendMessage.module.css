@@ -1,0 +1,23 @@
+.button {
+  border-radius: 10px;
+  color: white;
+  transition: all 0.2s ease;
+  background: var(--accent-primary);
+  font-size: 25px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.button:hover {
+  box-shadow: 0 0 0 3px var(--card-bg), 0 0 0 5px var(--accent-secondary);
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.div_button {
+  padding: 4px;
+}

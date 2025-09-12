@@ -1,0 +1,291 @@
+.loginContainer {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.loginTitle {
+  text-align: center;
+  color: var(--text-primary);
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ОБЩИЕ стили для всех input полей - делаем более специфичными */
+.loginForm .inputField,
+.loginContainer .inputField {
+  padding: 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: var(--bg-primary);
+  color: var(--text-primary) !important;
+  width: 100%;
+  box-sizing: border-box;
+  height: 50px;
+}
+
+.loginForm .inputField::placeholder,
+.loginContainer .inputField::placeholder {
+  color: var(--text-secondary) !important;
+  opacity: 0.7;
+}
+
+.loginForm .inputField:focus,
+.loginContainer .inputField:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background: var(--card-bg);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  transform: translateY(-2px);
+  color: var(--text-primary) !important;
+}
+
+.loginForm .inputField.error,
+.loginContainer .inputField.error {
+  border-color: #e74c3c;
+  background: rgba(231, 76, 60, 0.05);
+}
+
+/* Стили для контейнера пароля */
+.passwordContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Стили для кнопки показа/скрытия пароля - делаем более специфичными */
+.loginForm .passwordToggle,
+.loginContainer .passwordToggle {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 18px;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+}
+
+.loginForm .passwordToggle:hover,
+.loginContainer .passwordToggle:hover {
+  color: var(--primary-color);
+  background-color: var(--hover-bg);
+}
+
+/* Увеличиваем правый отступ у поля пароля */
+.passwordContainer .inputField {
+  padding-right: 55px !important;
+}
+
+.checkboxGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-color);
+  cursor: pointer;
+}
+
+.checkboxLabel {
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.buttonsGroup {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.submitButton {
+  flex: 1;
+  padding: 15px;
+  background: var(--accent-gradient);
+  color: var(--text-inverse);
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.clearButton {
+  flex: 1;
+  padding: 15px;
+  background: var(--text-secondary);
+  color: var(--text-inverse);
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clearButton:hover:not(:disabled) {
+  background: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.clearButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  background: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.fieldError {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 5px;
+  padding-left: 5px;
+}
+
+/* Анимации */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loginContainer {
+  animation: slideIn 0.6s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+  .loginContainer {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .buttonsGroup {
+    flex-direction: column;
+  }
+
+  .submitButton,
+  .clearButton {
+    width: 100%;
+  }
+
+  .passwordToggle {
+    right: 12px;
+    font-size: 16px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .passwordContainer .inputField {
+    padding-right: 50px !important;
+  }
+}
+
+/* Дополнительно: принудительно задаем цвета для всех текстовых элементов внутри формы */
+.loginContainer *:not(button):not(input):not(textarea):not(select) {
+  color: var(--text-primary) !important;
+}
+
+/* Явно задаем цвет для лейблов */
+.formGroup > label {
+  color: var(--text-primary) !important;
+  font-weight: 600;
+}
+.fieldError {
+  color: #e74c3c !important;
+  font-size: 12px;
+  margin-top: 4px;
+  padding-left: 5px;
+  font-weight: 500;
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Анимация появления ошибки */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Убедимся, что контейнер формы правильно отображает ошибки */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Уменьшаем gap между полем и ошибкой */
+  margin-bottom: 8px;
+}

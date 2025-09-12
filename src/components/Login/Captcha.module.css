@@ -1,0 +1,129 @@
+.captchaContainer {
+  margin: 15px 0;
+  padding: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-primary);
+}
+
+.captchaHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.captchaLabel {
+  font-weight: 600;
+  color: var(--text-primary) !important; /* Принудительно задаем цвет */
+  font-size: 14px;
+}
+
+.refreshButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 0.2s;
+  color: var(--text-primary) !important; /* Принудительно задаем цвет */
+}
+
+.refreshButton:hover {
+  background-color: var(--hover-bg);
+}
+
+.refreshButton:active {
+  transform: scale(0.95);
+}
+
+.captchaImage {
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Более специфичные селекторы для инпута капчи */
+.captchaContainer .captchaInput,
+.loginForm .captchaInput,
+.loginContainer .captchaInput {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: var(--card-bg);
+  color: var(--text-primary) !important; /* Принудительно задаем цвет */
+}
+
+.captchaContainer .captchaInput::placeholder,
+.loginForm .captchaInput::placeholder,
+.loginContainer .captchaInput::placeholder {
+  color: var(
+    --text-secondary
+  ) !important; /* Принудительно задаем цвет плейсхолдера */
+  opacity: 0.7;
+}
+
+.captchaContainer .captchaInput:focus,
+.loginForm .captchaInput:focus,
+.loginContainer .captchaInput:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.25);
+  color: var(--text-primary) !important; /* Цвет при фокусе */
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fadeOut {
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+/* Принудительно задаем цвета для всех текстовых элементов внутри капчи */
+.captchaContainer *:not(button):not(input):not(textarea):not(select) {
+  color: var(--text-primary) !important;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+  .captchaContainer {
+    padding: 12px;
+    margin: 10px 0;
+  }
+
+  .captchaInput {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .captchaLabel {
+    font-size: 13px;
+  }
+}
+.captchaInput {
+  color: var(--text-primary) !important;
+  background-color: var(--input-bg, var(--bg-primary)) !important;
+}
+.captchaInput::placeholder {
+  color: var(--text-secondary) !important;
+  opacity: 0.7;
+}
+
+/* Для фокусированного состояния */
+.captchaInput:focus {
+  color: var(--text-primary) !important;
+}

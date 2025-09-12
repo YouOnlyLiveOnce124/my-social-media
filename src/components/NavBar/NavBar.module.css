@@ -1,0 +1,115 @@
+.nav {
+  grid-area: navV;
+  background: var(--bg-gradient);
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+.selection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav_div {
+  padding: 0;
+  margin: 0;
+}
+
+.nav_div a {
+  display: block;
+  color: var(--text-inverse);
+  font-size: 16px;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.nav_div a:hover {
+  color: rgb(213, 230, 141);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(3px);
+}
+
+.nav_div a.active {
+  color: rgb(213, 230, 141);
+  background: rgba(255, 255, 255, 0.2);
+  font-weight: 500;
+}
+
+.div_best_friend {
+  margin-top: 10px;
+  padding: 15px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Стили для друзей */
+.best_friends_list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.best_friend_item {
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.best_friend_item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(2px);
+}
+
+.best_friend_item a {
+  color: var(--text-inverse);
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
+}
+
+.best_friend_item a.active {
+  color: rgb(213, 230, 141);
+  font-weight: 500;
+}
+
+.best_friends_title {
+  color: var(--text-inverse);
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  text-align: left;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .nav {
+    padding: 10px;
+  }
+
+  .nav_div a {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .best_friend_item {
+    padding: 6px 10px;
+  }
+
+  .best_friend_item a {
+    font-size: 13px;
+  }
+}

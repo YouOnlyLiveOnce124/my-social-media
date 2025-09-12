@@ -1,0 +1,63 @@
+.fieldInput {
+  width: 100%;
+}
+
+.fieldInput input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  font-size: 16px; /* Размер текста для нормального состояния */
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+  box-sizing: border-box;
+  color: #2c3e50; /* Явно задаем цвет текста */
+}
+
+.fieldInput input:focus {
+  outline: none;
+  border-color: #3498db;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* Стиль для input с ошибкой - добавляем размер текста */
+.fieldInput input.error {
+  border-color: #e74c3c !important;
+  background: rgba(231, 76, 60, 0.05) !important;
+  font-size: 16px !important; /* Явно задаем размер текста */
+  color: #2c3e50 !important; /* Явно задаем цвет текста */
+}
+
+/* Стиль для текста ошибки */
+.fieldInput .error {
+  color: #e74c3c !important;
+  font-size: 12px;
+  margin-top: 4px;
+  padding-left: 5px;
+  font-weight: 500;
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.errorMessageInDiv {
+  background: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  font-size: 14px;
+  text-align: center;
+  margin: 10px 0;
+}

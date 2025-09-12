@@ -1,0 +1,127 @@
+.container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px;
+  margin: -10px;
+  overflow: hidden;
+  z-index: 2;
+  border-radius: 12px; /* Добавляем закругления */
+}
+
+.appName {
+  font-size: 24px;
+  font-weight: 700;
+  user-select: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  position: relative;
+  z-index: 4;
+
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(45deg, #fff, #e0e0e0, #fff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Вспышка ТОЛЬКО на текст */
+.flashOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.5) 40%,
+    transparent 70%
+  );
+  z-index: 3;
+  pointer-events: none;
+  transition: all 0.15s ease-out;
+  border-radius: 8px; /* Совпадает с текстом */
+  mix-blend-mode: overlay;
+  opacity: 0;
+}
+
+/* Активная вспышка */
+.flashOverlay.active {
+  opacity: 1;
+  animation: flashBang 0.3s ease-out;
+}
+
+@keyframes flashBang {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+.particle {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 2;
+  animation: sparkFloat 1.2s ease-out forwards;
+}
+
+@keyframes sparkFloat {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(
+        calc(var(--speed-x, 0) * 80px),
+        calc(var(--speed-y, 0) * 80px)
+      )
+      scale(0.1) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .appName {
+    font-size: 20px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .appName {
+    font-size: 18px;
+    padding: 4px 10px;
+  }
+
+  .container {
+    padding: 8px;
+    margin: -8px;
+  }
+}

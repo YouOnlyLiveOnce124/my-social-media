@@ -1,0 +1,91 @@
+.contacts_section {
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.contacts_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.contacts_header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.contacts_actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit_btn,
+.save_btn,
+.cancel_btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.edit_btn {
+  background: #4caf50;
+  color: white;
+}
+
+.save_btn {
+  background: #2196f3;
+  color: white;
+}
+
+.cancel_btn {
+  background: #f44336;
+  color: white;
+}
+
+.contacts_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.contact_item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact_label {
+  font-weight: bold;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.contact_icon {
+  font-size: 1.1rem;
+}
+
+.contact_value {
+  color: #666;
+  word-break: break-all;
+}
+
+.contact_input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.contact_input:focus {
+  outline: none;
+  border-color: #2196f3;
+}

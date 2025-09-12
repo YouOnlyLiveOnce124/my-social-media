@@ -1,0 +1,695 @@
+.game2048 {
+  text-align: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  margin: 10px;
+}
+
+.gameHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.gameHeader h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 0;
+}
+
+.scores {
+  display: flex;
+  gap: 15px;
+}
+
+.scoreBoard {
+  background: var(--bg-gradient);
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 100px;
+  box-shadow: var(--shadow);
+}
+
+.scoreLabel {
+  color: var(--text-inverse);
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.scoreValue {
+  color: var(--text-inverse);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.newGameBtn {
+  background: var(--accent-gradient);
+  color: var(--text-inverse);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  white-space: nowrap;
+}
+
+.newGameBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.newGameBtn:active {
+  transform: translateY(0);
+}
+
+.gameBoard {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 20px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.boardRow {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.boardRow:last-child {
+  margin-bottom: 0;
+}
+
+.tile:hover:not(.tileEmpty) {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tile:last-child {
+  margin-right: 0;
+}
+
+.tile {
+  width: 90px;
+  height: 90px;
+  margin-right: 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: bold;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  color: white !important;
+}
+
+.tileEmpty {
+  background: var(--hover-bg);
+  box-shadow: inset 0 0 0 2px var(--border-color);
+  cursor: not-allowed;
+}
+
+/* ЦВЕТОВАЯ СХЕМА ДЛЯ ПЛИТОК */
+.tile:not(.tileEmpty) {
+  font-weight: bold;
+  /* Автоматический выбор цвета текста */
+  color: var(--tile-text-color, #000000) !important;
+}
+
+.tile2 {
+  background: #eee4da;
+  --tile-text-color: #776e65;
+}
+.tile4 {
+  background: #ede0c8;
+  --tile-text-color: #776e65;
+}
+.tile6 {
+  background: #f2b179;
+  --tile-text-color: #f9f6f2;
+}
+.tile8 {
+  background: #f59563;
+  --tile-text-color: #f9f6f2;
+}
+.tile10 {
+  background: #f67c5f;
+  --tile-text-color: #f9f6f2;
+}
+.tile12 {
+  background: #f65e3b;
+  --tile-text-color: #f9f6f2;
+}
+.tile14 {
+  background: #edcf72;
+  --tile-text-color: #776e65;
+}
+.tile16 {
+  background: #edcc61;
+  --tile-text-color: #776e65;
+}
+.tile18 {
+  background: #edc850;
+  --tile-text-color: #776e65;
+}
+
+/* Уровень 2: 20-32 */
+.tile20 {
+  background: #edc53f;
+  --tile-text-color: #776e65;
+}
+.tile22 {
+  background: #eec22e;
+  --tile-text-color: #776e65;
+}
+.tile24 {
+  background: #3c3a32;
+  --tile-text-color: #f9f6f2;
+}
+.tile26 {
+  background: #3c3a28;
+  --tile-text-color: #f9f6f2;
+}
+.tile28 {
+  background: #3c3a1e;
+  --tile-text-color: #f9f6f2;
+}
+.tile30 {
+  background: #3c3a14;
+  --tile-text-color: #f9f6f2;
+}
+.tile32 {
+  background: #3c3a0a;
+  --tile-text-color: #f9f6f2;
+}
+
+/* Уровень 3: 34-64 */
+.tile34 {
+  background: #5dade2;
+  --tile-text-color: #ffffff;
+}
+.tile36 {
+  background: #3498db;
+  --tile-text-color: #ffffff;
+}
+.tile38 {
+  background: #2e86c1;
+  --tile-text-color: #ffffff;
+}
+.tile40 {
+  background: #2874a6;
+  --tile-text-color: #ffffff;
+}
+.tile42 {
+  background: #21618c;
+  --tile-text-color: #ffffff;
+}
+.tile44 {
+  background: #1b4f72;
+  --tile-text-color: #ffffff;
+}
+.tile46 {
+  background: #154360;
+  --tile-text-color: #ffffff;
+}
+.tile48 {
+  background: #1a5276;
+  --tile-text-color: #ffffff;
+}
+.tile50 {
+  background: #1f618d;
+  --tile-text-color: #ffffff;
+}
+.tile52 {
+  background: #2471a3;
+  --tile-text-color: #ffffff;
+}
+.tile54 {
+  background: #2980b9;
+  --tile-text-color: #ffffff;
+}
+.tile56 {
+  background: #2e86c1;
+  --tile-text-color: #ffffff;
+}
+.tile58 {
+  background: #3498db;
+  --tile-text-color: #ffffff;
+}
+.tile60 {
+  background: #5dade2;
+  --tile-text-color: #ffffff;
+}
+.tile62 {
+  background: #85c1e9;
+  --tile-text-color: #2c3e50;
+}
+.tile64 {
+  background: #aed6f1;
+  --tile-text-color: #2c3e50;
+}
+
+/* Уровень 4: 66-128 */
+.tile66 {
+  background: #d7bde2;
+  --tile-text-color: #2c3e50;
+}
+.tile68 {
+  background: #c39bd3;
+  --tile-text-color: #ffffff;
+}
+.tile70 {
+  background: #af7ac5;
+  --tile-text-color: #ffffff;
+}
+.tile72 {
+  background: #9b59b6;
+  --tile-text-color: #ffffff;
+}
+.tile74 {
+  background: #884ea0;
+  --tile-text-color: #ffffff;
+}
+.tile76 {
+  background: #76448a;
+  --tile-text-color: #ffffff;
+}
+.tile78 {
+  background: #633974;
+  --tile-text-color: #ffffff;
+}
+.tile80 {
+  background: #512e5f;
+  --tile-text-color: #ffffff;
+}
+.tile82 {
+  background: #4a235a;
+  --tile-text-color: #ffffff;
+}
+.tile84 {
+  background: #4a235a;
+  --tile-text-color: #ffffff;
+}
+.tile86 {
+  background: #5b2c6f;
+  --tile-text-color: #ffffff;
+}
+.tile88 {
+  background: #6c3483;
+  --tile-text-color: #ffffff;
+}
+.tile90 {
+  background: #7d3c98;
+  --tile-text-color: #ffffff;
+}
+.tile92 {
+  background: #8e44ad;
+  --tile-text-color: #ffffff;
+}
+.tile94 {
+  background: #9b59b6;
+  --tile-text-color: #ffffff;
+}
+.tile96 {
+  background: #a569bd;
+  --tile-text-color: #ffffff;
+}
+.tile98 {
+  background: #bb8fce;
+  --tile-text-color: #2c3e50;
+}
+.tile100 {
+  background: #d2b4de;
+  --tile-text-color: #2c3e50;
+}
+.tile102 {
+  background: #e8daef;
+  --tile-text-color: #2c3e50;
+}
+.tile104 {
+  background: #f4ecf7;
+  --tile-text-color: #2c3e50;
+}
+.tile106 {
+  background: #ebdef0;
+  --tile-text-color: #2c3e50;
+}
+.tile108 {
+  background: #d7bde2;
+  --tile-text-color: #2c3e50;
+}
+.tile110 {
+  background: #c39bd3;
+  --tile-text-color: #ffffff;
+}
+.tile112 {
+  background: #af7ac5;
+  --tile-text-color: #ffffff;
+}
+.tile114 {
+  background: #9b59b6;
+  --tile-text-color: #ffffff;
+}
+.tile116 {
+  background: #884ea0;
+  --tile-text-color: #ffffff;
+}
+.tile118 {
+  background: #76448a;
+  --tile-text-color: #ffffff;
+}
+.tile120 {
+  background: #633974;
+  --tile-text-color: #ffffff;
+}
+.tile122 {
+  background: #512e5f;
+  --tile-text-color: #ffffff;
+}
+.tile124 {
+  background: #4a235a;
+  --tile-text-color: #ffffff;
+}
+.tile126 {
+  background: #4a235a;
+  --tile-text-color: #ffffff;
+}
+.tile128 {
+  background: #5b2c6f;
+  --tile-text-color: #ffffff;
+}
+
+/* Уровень 5: 130+ (специальные цвета) */
+.tile130 {
+  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+  --tile-text-color: #ffffff;
+}
+.tile132 {
+  background: linear-gradient(45deg, #ee5a24, #ff9f43);
+  --tile-text-color: #ffffff;
+}
+.tile134 {
+  background: linear-gradient(45deg, #ff9f43, #feca57);
+  --tile-text-color: #2c3e50;
+}
+.tile136 {
+  background: linear-gradient(45deg, #feca57, #ffd166);
+  --tile-text-color: #2c3e50;
+}
+.tile138 {
+  background: linear-gradient(45deg, #ffd166, #ffeaa7);
+  --tile-text-color: #2c3e50;
+}
+.tile140 {
+  background: linear-gradient(45deg, #ffeaa7, #fdcb6e);
+  --tile-text-color: #2c3e50;
+}
+.tile142 {
+  background: linear-gradient(45deg, #fdcb6e, #f39c12);
+  --tile-text-color: #ffffff;
+}
+.tile144 {
+  background: linear-gradient(45deg, #f39c12, #e67e22);
+  --tile-text-color: #ffffff;
+}
+.tile146 {
+  background: linear-gradient(45deg, #e67e22, #d35400);
+  --tile-text-color: #ffffff;
+}
+.tile148 {
+  background: linear-gradient(45deg, #d35400, #e74c3c);
+  --tile-text-color: #ffffff;
+}
+.tile150 {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  --tile-text-color: #ffffff;
+}
+
+/* Дополнительные плитки для больших чисел */
+.tile152 {
+  background: linear-gradient(45deg, #c0392b, #a93226);
+  --tile-text-color: #ffffff;
+}
+.tile154 {
+  background: linear-gradient(45deg, #a93226, #922b21);
+  --tile-text-color: #ffffff;
+}
+.tile156 {
+  background: linear-gradient(45deg, #922b21, #7b241c);
+  --tile-text-color: #ffffff;
+}
+.tile158 {
+  background: linear-gradient(45deg, #7b241c, #641e16);
+  --tile-text-color: #ffffff;
+}
+.tile160 {
+  background: linear-gradient(45deg, #641e16, #4a235a);
+  --tile-text-color: #ffffff;
+}
+
+/* Специальные плитки */
+.tile256 {
+  background: linear-gradient(45deg, #3498db, #9b59b6);
+  --tile-text-color: #ffffff;
+  font-size: 24px;
+}
+.tile512 {
+  background: linear-gradient(45deg, #9b59b6, #8e44ad);
+  --tile-text-color: #ffffff;
+  font-size: 22px;
+}
+.tile1024 {
+  background: linear-gradient(45deg, #8e44ad, #6c3483);
+  --tile-text-color: #ffffff;
+  font-size: 20px;
+}
+.tile2048 {
+  background: linear-gradient(45deg, #6c3483, #4a235a);
+  --tile-text-color: #ffffff;
+  font-size: 18px;
+  box-shadow: 0 0 20px rgba(155, 89, 182, 0.5);
+}
+
+.gameInstructions {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 15px;
+  background: var(--hover-bg);
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.gameOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.gameMessage {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.wonMessage {
+  background: var(--accent-gradient);
+  color: var(--text-inverse);
+}
+
+.restartBtn,
+.continueBtn {
+  background: var(--accent-gradient);
+  color: var(--text-inverse);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+}
+
+.restartBtn:hover,
+.continueBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .gameHeader {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .headerRight {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .scores {
+    order: 2;
+  }
+
+  .newGameBtn {
+    order: 1;
+  }
+
+  .tile {
+    width: 70px;
+    height: 70px;
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game2048 {
+    padding: 15px;
+    margin: 5px;
+  }
+
+  .headerRight {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .scores {
+    display: flex;
+    gap: 10px;
+  }
+
+  .newGameBtn {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .tile {
+    width: 60px;
+    height: 60px;
+    font-size: 18px;
+    margin-right: 8px;
+  }
+
+  .scoreBoard {
+    min-width: 80px;
+    padding: 10px 15px;
+  }
+
+  .scoreValue {
+    font-size: 20px;
+  }
+}
+/* Prevent text selection and element highlighting */
+.game2048 {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+}
+
+.gameHeader,
+.scores,
+.scoreBoard,
+.newGameBtn,
+.gameBoard,
+.boardRow,
+.tile,
+.gameInstructions {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Specifically for tiles to prevent selection */
+.tile {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent dragging of tiles */
+.tile {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+/* For buttons and interactive elements */
+.newGameBtn,
+.restartBtn,
+.continueBtn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* For score values */
+.scoreValue {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Additional mobile-specific prevention */
+@media (max-width: 768px) {
+  .game2048 {
+    -webkit-touch-callout: none; /* Prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none; /* Prevent webkit from resizing text to fit */
+  }
+
+  .tile {
+    -webkit-touch-callout: none;
+  }
+}

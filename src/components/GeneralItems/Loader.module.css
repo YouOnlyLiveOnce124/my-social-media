@@ -1,0 +1,115 @@
+.loaderContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  gap: 20px;
+  background: transparent;
+  padding: 40px;
+}
+
+.cssLoader {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(52, 152, 219, 0.2);
+  border-top: 4px solid #3498db;
+  border-right: 4px solid #2980b9;
+  border-radius: 50%;
+  animation: spin 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    border-top-color: #3498db;
+    border-right-color: #2980b9;
+  }
+  50% {
+    border-top-color: #9b59b6;
+    border-right-color: #8e44ad;
+  }
+  100% {
+    transform: rotate(360deg);
+    border-top-color: #3498db;
+    border-right-color: #2980b9;
+  }
+}
+
+.loaderText {
+  color: #2c3e50;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  animation: pulse 1.5s ease-in-out infinite;
+  text-transform: uppercase;
+  font-family: "Arial", sans-serif;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* Эффект градиента для текста */
+.loaderText {
+  background: linear-gradient(45deg, #3498db, #9b59b6, #3498db);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .loaderContainer {
+    padding: 30px;
+    gap: 15px;
+  }
+
+  .cssLoader {
+    width: 50px;
+    height: 50px;
+    border-width: 3px;
+  }
+
+  .loaderText {
+    font-size: 16px;
+  }
+}
+
+/* Темная тема (опционально) */
+@media (prefers-color-scheme: dark) {
+  .loaderContainer {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .cssLoader {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .loaderText {
+    color: #ecf0f1;
+  }
+}

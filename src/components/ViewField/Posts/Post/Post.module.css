@@ -1,0 +1,64 @@
+.main_div {
+  display: grid;
+  grid-template-areas: "img item like";
+  grid-template-columns: 60px 1fr 80px;
+  grid-template-rows: auto;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 20px;
+  margin: 12px 0;
+  background: var(--card-bg);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow);
+}
+
+.main_div:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.main_div img {
+  grid-area: img;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent-primary);
+}
+
+.item {
+  grid-area: item;
+  font-size: 16px;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin: 0;
+  word-break: break-word;
+}
+
+.field_div {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.like {
+  grid-area: like;
+  align-self: center;
+  justify-self: end;
+  font-size: 14px;
+  color: var(--text-secondary);
+  background: var(--bg-primary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  min-width: 80px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.like:hover {
+  background: var(--accent-primary);
+  color: white;
+  cursor: pointer;
+}

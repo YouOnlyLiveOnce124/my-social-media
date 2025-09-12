@@ -1,0 +1,84 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    "left right"
+    "send send";
+  gap: 20px;
+  height: calc(100vh - 100px);
+  padding: 20px;
+}
+
+.dialogs_left_part {
+  grid-area: left;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  overflow-y: auto;
+}
+
+.messages_right_part {
+  grid-area: right;
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  overflow-y: auto;
+}
+
+.m_messages {
+  align-self: flex-end;
+  margin: 5px 0;
+  background: var(--accent-primary);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 18px 18px 0 18px;
+  max-width: 70%;
+}
+
+.f_messages {
+  align-self: flex-start;
+  margin: 5px 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 10px 15px;
+  border-radius: 18px 18px 18px 0;
+  max-width: 70%;
+}
+
+.send_message {
+  grid-area: send;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+/* Стили для ссылок */
+.dialogs_left_part a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: block;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 5px 0;
+}
+
+.dialogs_left_part a:hover {
+  background: var(--hover-bg);
+  color: var(--accent-primary);
+}
+
+.dialogs_left_part a.active {
+  background: var(--accent-primary);
+  color: white;
+  font-weight: 500;
+}

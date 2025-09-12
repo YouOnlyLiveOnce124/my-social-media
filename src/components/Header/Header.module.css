@@ -1,0 +1,130 @@
+.header {
+  grid-area: headerR;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: var(--bg-gradient);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header img:hover {
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--text-inverse);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login a {
+  color: var(--text-inverse);
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.login a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.login button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--accent-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login button:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.stateLogin {
+  font-weight: 600;
+  font-size: 16px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .header {
+    padding: 12px 20px;
+  }
+
+  .header img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .login {
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .login a {
+    padding: 8px 16px;
+  }
+}
+.logoSection {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .appName {
+    font-size: 20px;
+  }
+
+  .logoSection {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .appName {
+    font-size: 18px;
+  }
+}

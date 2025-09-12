@@ -1,0 +1,138 @@
+.userCard {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 15px;
+  grid-template-areas:
+    "avatar info"
+    "avatar button"
+    "status status";
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.userCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.avatarSection {
+  grid-area: avatar;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent-primary);
+  transition: all 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+  border-color: var(--accent-secondary);
+}
+
+.infoSection {
+  grid-area: info;
+}
+
+.userName {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 5px 0;
+}
+
+.userStatus {
+  grid-area: status;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+  padding: 10px;
+  background: var(--bg-primary);
+  border-radius: 8px;
+  font-style: italic;
+}
+
+.location {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin: 3px 0;
+}
+
+.buttonSection {
+  grid-area: button;
+  display: flex;
+  align-items: center;
+}
+
+.followBtn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+  text-align: center;
+}
+
+.followBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.follow {
+  background: #27ae60;
+  color: white;
+}
+
+.follow:hover:not(:disabled) {
+  background: #219a52;
+  transform: translateY(-1px);
+}
+
+.unfollow {
+  background: #e74c3c;
+  color: white;
+}
+
+.unfollow:hover:not(:disabled) {
+  background: #c0392b;
+  transform: translateY(-1px);
+}
+
+.loading {
+  opacity: 0.7;
+  position: relative;
+}
+
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

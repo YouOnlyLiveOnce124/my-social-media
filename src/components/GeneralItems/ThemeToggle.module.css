@@ -1,0 +1,43 @@
+.themeToggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+.themeToggle:hover {
+  background: var(--hover-bg, rgba(0, 0, 0, 0.1));
+  transform: scale(1.1);
+}
+
+.tooltip {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--tooltip-bg, #333);
+  color: var(--tooltip-color, white);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.themeToggle:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  bottom: -35px;
+}

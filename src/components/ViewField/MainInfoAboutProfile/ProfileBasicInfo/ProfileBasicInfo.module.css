@@ -1,0 +1,39 @@
+.basic_info_section {
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.basic_info_grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.info_item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info_item label {
+  font-weight: bold;
+  color: #555;
+}
+
+.info_textarea {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  min-height: 60px;
+  resize: vertical;
+}
+
+.basic_info_actions {
+  display: flex;
+  gap: 10px;
+}

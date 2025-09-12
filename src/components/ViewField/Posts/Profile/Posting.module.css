@@ -1,0 +1,87 @@
+.field_div {
+  padding: 20px;
+  font-size: 18px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.field_div h3 {
+  margin: 0 0 20px 0;
+  color: var(--text-primary);
+  font-size: 22px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--accent-primary);
+  padding-bottom: 10px;
+}
+
+/* Стили для текстареа */
+.field_textarea_and_button {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.textarea {
+  width: 100%;
+}
+
+.textarea textarea {
+  width: 100%;
+  min-height: 80px; /* Минимальная высота */
+  max-height: 200px; /* Максимальная высота */
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  resize: vertical; /* Разрешаем изменение размера только по вертикали */
+  font-family: inherit;
+  font-size: 16px;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease;
+}
+
+.textarea textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+}
+
+.textarea textarea::placeholder {
+  color: var(--text-secondary);
+}
+
+/* Стили для кнопки */
+.button {
+  align-self: flex-end;
+}
+
+.button button {
+  padding: 10px 20px;
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button button:hover {
+  background: var(--accent-secondary);
+}
+
+.button button:disabled {
+  background: var(--disabled-bg);
+  cursor: not-allowed;
+}
+
+/* Сообщения об ошибках */
+.textarea .error {
+  color: var(--error-color);
+  font-size: 14px;
+  margin-top: 5px;
+}

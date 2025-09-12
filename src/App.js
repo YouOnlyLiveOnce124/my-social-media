@@ -13,7 +13,6 @@ import { setTheme } from "./reducer/themeReducer";
 import Game2048 from "./components/Game2048/Game2048";
 
 const App = () => {
-  const state = useSelector((state) => state.app);
   const theme = useSelector((state) => state.theme.theme);
   const dispatch = useDispatch();
 

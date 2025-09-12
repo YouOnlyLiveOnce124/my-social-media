@@ -1,5 +1,4 @@
 import React, { memo, useState, useEffect } from "react";
-import m from "./ProfileStatus.module.css";
 
 const ProfileStatus = memo((props) => {
   const [editMode, setEditMode] = useState(false);
@@ -30,7 +29,6 @@ const ProfileStatus = memo((props) => {
     }
   };
 
-  // Если нажали Enter в поле ввода
   const onKeyPress = (e) => {
     if (e.key === "Enter") {
       deactivateEditMode();

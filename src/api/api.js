@@ -150,7 +150,7 @@ export const savePhoto = async (photoFile) => {
 };
 
 // For update data contacts
-// api.js - исправляем функцию updateProfileData
+
 export const updateProfileData = async (profileData) => {
   try {
     const formatUrl = (url) => {

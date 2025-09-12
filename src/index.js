@@ -6,11 +6,8 @@ import mainStore from "./reducer/reduxStore";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
-// import { mainStore } from "./reducer/State";
-
-// let onlyForRendering = mainStore.state;
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// const renderTree = () => {
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -20,9 +17,3 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
-// };
-
-// mainStore.subscribe(() => {
-//   renderTree();
-// });
-// renderTree(mainStore.getState());

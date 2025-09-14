@@ -2,6 +2,7 @@
 
 const initialState = {
   theme: "light",
+  ddd: "zzz",
 };
 
 export const themeReducer = (state = initialState, action) => {

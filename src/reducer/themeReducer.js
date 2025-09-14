@@ -1,3 +1,5 @@
+//Reducer for theme dark-light
+
 const initialState = {
   theme: "light",
 };

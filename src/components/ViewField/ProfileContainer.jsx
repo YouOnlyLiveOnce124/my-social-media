@@ -7,25 +7,21 @@ import {
   updateUserStatus,
 } from "../../reducer/ProfilePageReducer";
 import ViewField from "./ViewField";
+import Loader from "../GeneralItems/Loader";
 
 const ProfileContainer = memo(() => {
   const profile = useSelector((state) => state.profilePage?.profile);
   const status = useSelector((state) => state.profilePage?.status);
-  const id = useSelector((state) => state.auth?.id); // ← добавил ?.
+  const id = useSelector((state) => state.auth?.id);
   const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
 
-  // ДОБАВЬ ЭТУ ПРОВЕРКУ ↓
-  if (!profile || !id) {
-    return <div>Loading...</div>; // или твой <Loader />
-  }
-
+  // ВСЕ ХУКИ ДОЛЖНЫ БЫТЬ ЗДЕСЬ ↓
   const isMyProfile = Boolean(
     id && (!params.userId || params.userId === String(id))
   );
 
-  // Используем useCallback для мемоизации функций
   const getCurrentUP = useCallback(
     (userId) => {
       dispatch(getCurrentUserPage(userId));
@@ -53,7 +49,7 @@ const ProfileContainer = memo(() => {
       userId = id;
 
       if (!userId) {
-        navigate("/login"); // Используем navigate вместо window.location
+        navigate("/login");
         return;
       }
     }
@@ -64,12 +60,16 @@ const ProfileContainer = memo(() => {
 
   console.log("ProfileContainer", params?.userId, id);
 
+  if (!profile || !id) {
+    return <Loader />;
+  }
+
   return (
     <div className="main_field">
       <ViewField
         profile={profile}
         status={status}
-        updateStatus={updateStatus} // Передаем мемоизированную функцию
+        updateStatus={updateStatus}
         paramsId={params.userId}
         myProfileId={id}
         isMyProfile={isMyProfile}

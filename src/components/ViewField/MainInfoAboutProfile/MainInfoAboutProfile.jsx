@@ -2,7 +2,6 @@ import React, { memo, useState } from "react";
 import { useDispatch } from "react-redux";
 import Loader from "../../GeneralItems/Loader";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
-
 import ProfilePhotoUpload from "./ProfilePhotoLoader/ProfilePhotoUpload";
 import {
   uploadPhoto,
@@ -17,12 +16,14 @@ import ProfileContacts from "./ProfileContacts/ProfileContacts";
 import ProfileBasicInfo from "./ProfileBasicInfo/ProfileBasicInfo";
 
 const MainInfoAboutProfile = memo((props) => {
-  if (!props.profile) {
-    return <Loader />;
-  }
   const { profile, status, updateStatus, myProfileId, isMyProfile } = props;
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // ПЕРЕМЕСТИ ПРОВЕРКУ СЮДА ↓ ПОСЛЕ ВСЕХ ХУКОВ!
+  if (!profile) {
+    return <Loader />;
+  }
 
   const handlePhotoChange = (photoData, file) => {
     dispatch(uploadPhoto(file, myProfileId));
@@ -48,16 +49,10 @@ const MainInfoAboutProfile = memo((props) => {
 
   const closeModal = () => setIsModalOpen(false);
 
-  // Добавляем проверку на загрузку и существование profile
-  if (!profile) {
-    return <Loader />;
-  }
-
   // Безопасное получение данных из profile
   const photos = profile.photos || {};
   const hasPhoto = photos.large !== null && photos.large !== undefined;
-  const avatarSrc =
-    hasPhoto && photos.large ? `${photos.large}?${Date.now()}` : iconAvatar;
+  const avatarSrc = hasPhoto ? `${photos.large}?${Date.now()}` : iconAvatar;
 
   return (
     <div className={m.container}>
@@ -97,16 +92,14 @@ const MainInfoAboutProfile = memo((props) => {
         />
       </div>
 
-      {/* Добавляем базовую информацию */}
       <ProfileBasicInfo
         profile={profile}
         isMyProfile={isMyProfile}
         onProfileUpdate={handleProfileUpdate}
       />
 
-      {/* Добавляем секцию контактов */}
       <ProfileContacts
-        contacts={profile.contacts || {}} // Добавляем fallback для contacts
+        contacts={profile.contacts || {}}
         isMyProfile={isMyProfile}
         onContactsUpdate={handleContactsUpdate}
       />
@@ -124,7 +117,7 @@ const MainInfoAboutProfile = memo((props) => {
               ×
             </button>
             <img
-              src={photos?.large || iconAvatar} // Используем photos.large
+              src={photos?.large || iconAvatar}
               alt="Full size avatar"
               className={m.fullSizeAvatar}
             />

@@ -17,7 +17,6 @@ const ProfileContainer = memo(() => {
   const params = useParams();
   const navigate = useNavigate();
 
-  // ВСЕ ХУКИ ДОЛЖНЫ БЫТЬ ЗДЕСЬ ↓
   const isMyProfile = Boolean(
     id && (!params.userId || params.userId === String(id))
   );

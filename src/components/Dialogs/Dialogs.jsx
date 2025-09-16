@@ -5,11 +5,18 @@ import Messages from "./Messages/Messages";
 import SendMessageContainer from "./SendMessage/SendMessageContainer";
 
 import { useSelector } from "react-redux";
+import Loader from "../GeneralItems/Loader";
 
 const Dialogs = () => {
   const state = useSelector((state) => state.dialogsPage);
-
-  let processedArrDataFriend = state.friends.map((dialog) => (
+  if (!state.friends || !state.messages || !state.myMessage) {
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
+  }
+  let processedArrDataFriend = (state?.friends || []).map((dialog) => (
     <DialogsWithFriend
       name={dialog.name}
       path={dialog.path}
@@ -19,11 +26,11 @@ const Dialogs = () => {
     />
   ));
 
-  let processedArrDataMessages = state.messages.map((m) => (
+  let processedArrDataMessages = (state?.messages || []).map((m) => (
     <Messages message={m.message} id={m.id} key={m.id} isMyMessage={false} />
   ));
 
-  let processedArrDataMyMessages = state.myMessage.map((m) => (
+  let processedArrDataMyMessages = (state?.myMessage || []).map((m) => (
     <Messages message={m.message} id={m.id} key={m.id} isMyMessage={true} />
   ));
 

@@ -1,7 +1,7 @@
 import React from "react";
 import m from "./Users.module.css";
 import userCardStyles from "./UserCard.module.css";
-import xui from "../../assets/imgs/user-avatar-icon-doodle-style-png.webp";
+import xex from "../../assets/imgs/user-avatar-icon-doodle-style-png.webp";
 import { NavLink } from "react-router-dom";
 
 const UsersFunctionalComponent = (props) => {
@@ -45,7 +45,7 @@ const UsersFunctionalComponent = (props) => {
             <div className={userCardStyles.avatarSection}>
               <NavLink to={"/profile/" + u.id}>
                 <img
-                  src={u.photos.small || xui}
+                  src={u?.photos?.small || xex}
                   alt="avatar"
                   className={userCardStyles.avatar}
                 />
@@ -54,10 +54,12 @@ const UsersFunctionalComponent = (props) => {
 
             {/* Информация */}
             <div className={userCardStyles.infoSection}>
-              <h3 className={userCardStyles.userName}>{u.name}</h3>
+              <h3 className={userCardStyles.userName}>
+                {u?.name || "No name"}
+              </h3>
               <div className={userCardStyles.location}>
-                <div>{"u.location.country"}</div>
-                <div>{"u.location.city"}</div>
+                <div>{u?.location?.country || "Unknown country"}</div>
+                <div>{u?.location?.city || "Unknown city"}</div>
               </div>
             </div>
 

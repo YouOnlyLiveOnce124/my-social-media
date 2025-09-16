@@ -9,12 +9,17 @@ import {
 import ViewField from "./ViewField";
 
 const ProfileContainer = memo(() => {
-  const profile = useSelector((state) => state.profilePage.profile);
-  const status = useSelector((state) => state.profilePage.status);
-  const id = useSelector((state) => state.auth.id);
+  const profile = useSelector((state) => state.profilePage?.profile);
+  const status = useSelector((state) => state.profilePage?.status);
+  const id = useSelector((state) => state.auth?.id); // ← добавил ?.
   const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
+
+  // ДОБАВЬ ЭТУ ПРОВЕРКУ ↓
+  if (!profile || !id) {
+    return <div>Loading...</div>; // или твой <Loader />
+  }
 
   const isMyProfile = Boolean(
     id && (!params.userId || params.userId === String(id))
@@ -57,7 +62,7 @@ const ProfileContainer = memo(() => {
     getStatusUser(userId);
   }, [params.userId, id, getCurrentUP, getStatusUser, navigate]);
 
-  console.log(`ProfileContainer ${params.userId} ${id}`);
+  console.log("ProfileContainer", params?.userId, id);
 
   return (
     <div className="main_field">

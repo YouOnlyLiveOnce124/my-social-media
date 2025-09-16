@@ -1,12 +1,16 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 import Dialogs from "./Dialogs";
-import { AuthHoc } from "../../hoc/authHOC";
 
 const DialogsContainer = () => {
-  let DialogsWithAuthCheck = AuthHoc(Dialogs);
+  const isAuth = useSelector((state) => state.auth.isAuth);
 
-  return <DialogsWithAuthCheck />;
+  if (!isAuth) {
+    return <Navigate to="/login/" />;
+  }
+
+  return <Dialogs />;
 };
 
 export default DialogsContainer;

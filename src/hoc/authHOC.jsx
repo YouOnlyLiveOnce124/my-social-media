@@ -1,11 +1,15 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 export const AuthHOC = (Component) => {
-  return (props) => {
-    const isAuth = useSelector((state) => state.auth.isAuth);
-
-    return isAuth ? <Component {...props} /> : <Navigate to="/login/" />;
+  return class NavigateComponent extends React.Component {
+    render() {
+      // isAuth должен передаваться как prop из контейнера
+      return this.props.isAuth ? (
+        <Component {...this.props} />
+      ) : (
+        <Navigate to="/login/" />
+      );
+    }
   };
 };

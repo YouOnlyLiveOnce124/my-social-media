@@ -17,6 +17,9 @@ import ProfileContacts from "./ProfileContacts/ProfileContacts";
 import ProfileBasicInfo from "./ProfileBasicInfo/ProfileBasicInfo";
 
 const MainInfoAboutProfile = memo((props) => {
+  if (!props.profile) {
+    return <Loader />;
+  }
   const { profile, status, updateStatus, myProfileId, isMyProfile } = props;
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,7 +56,8 @@ const MainInfoAboutProfile = memo((props) => {
   // Безопасное получение данных из profile
   const photos = profile.photos || {};
   const hasPhoto = photos.large !== null && photos.large !== undefined;
-  const avatarSrc = hasPhoto ? `${photos.large}?${Date.now()}` : iconAvatar;
+  const avatarSrc =
+    hasPhoto && photos.large ? `${photos.large}?${Date.now()}` : iconAvatar;
 
   return (
     <div className={m.container}>
@@ -73,11 +77,11 @@ const MainInfoAboutProfile = memo((props) => {
             className={m.avatar}
             onClick={openModal}
             style={{ cursor: hasPhoto ? "pointer" : "default" }}
-            key={photos.large} // Используем photos.large вместо profile.photos.large
+            key={photos.large}
           />
 
           <img
-            src={profile.lookingForAJob ? lookingJob : notLookingJob}
+            src={profile?.lookingForAJob ? lookingJob : notLookingJob}
             alt="employment status"
             className={m.job_status_icon}
           />
@@ -120,7 +124,7 @@ const MainInfoAboutProfile = memo((props) => {
               ×
             </button>
             <img
-              src={photos.large} // Используем photos.large
+              src={photos?.large || iconAvatar} // Используем photos.large
               alt="Full size avatar"
               className={m.fullSizeAvatar}
             />

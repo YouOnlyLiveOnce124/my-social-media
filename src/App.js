@@ -78,9 +78,9 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Navigate to="/profile" replace />} />
             <Route path="/profile/:userId?" element={<ProfileContainer />} />
-            <Route path="/dialogs/*" element={<DialogsWithSuspense />} />
+            {/* <Route path="/dialogs/*" element={<DialogsWithSuspense />} /> */}
             <Route path="/users/*" element={<UsersContainerWithSuspense />} />
-            <Route path="/login/" element={<LoginField />} />
+            {/* <Route path="/login/" element={<LoginField />} /> */}
             <Route path="/boat/" element={<Boat />} />
             <Route path="/game-2048/" element={<Game2048 />} />
             <Route path="*" element={<div>Page not found</div>} />

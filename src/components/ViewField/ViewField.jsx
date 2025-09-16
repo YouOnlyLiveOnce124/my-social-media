@@ -27,9 +27,7 @@ const ViewField = memo((props) => {
         />
       </section>
 
-      <section className="posts_section">
-        <MyPosts />
-      </section>
+      <section className="posts_section">{/* <MyPosts /> */}</section>
     </div>
   );
 });

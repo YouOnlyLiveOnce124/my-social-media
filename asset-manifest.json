@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/my-social-media/static/css/main.f101d445.css",
-    "main.js": "/my-social-media/static/js/main.0174246b.js",
+    "main.js": "/my-social-media/static/js/main.132aa843.js",
     "static/css/50.dc5d3498.chunk.css": "/my-social-media/static/css/50.dc5d3498.chunk.css",
-    "static/js/50.48062283.chunk.js": "/my-social-media/static/js/50.48062283.chunk.js",
+    "static/js/50.106af86b.chunk.js": "/my-social-media/static/js/50.106af86b.chunk.js",
     "static/css/538.f57ba41a.chunk.css": "/my-social-media/static/css/538.f57ba41a.chunk.css",
     "static/js/538.45611285.chunk.js": "/my-social-media/static/js/538.45611285.chunk.js",
     "static/media/free-icon-work-time-3673355.png": "/my-social-media/static/media/free-icon-work-time-3673355.125e4710614500989f3e.png",
@@ -13,14 +13,14 @@
     "static/media/user-avatar-icon-doodle-style-png.webp": "/my-social-media/static/media/user-avatar-icon-doodle-style-png.d4833c8156d425f4c174.webp",
     "index.html": "/my-social-media/index.html",
     "main.f101d445.css.map": "/my-social-media/static/css/main.f101d445.css.map",
-    "main.0174246b.js.map": "/my-social-media/static/js/main.0174246b.js.map",
+    "main.132aa843.js.map": "/my-social-media/static/js/main.132aa843.js.map",
     "50.dc5d3498.chunk.css.map": "/my-social-media/static/css/50.dc5d3498.chunk.css.map",
-    "50.48062283.chunk.js.map": "/my-social-media/static/js/50.48062283.chunk.js.map",
+    "50.106af86b.chunk.js.map": "/my-social-media/static/js/50.106af86b.chunk.js.map",
     "538.f57ba41a.chunk.css.map": "/my-social-media/static/css/538.f57ba41a.chunk.css.map",
     "538.45611285.chunk.js.map": "/my-social-media/static/js/538.45611285.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f101d445.css",
-    "static/js/main.0174246b.js"
+    "static/js/main.132aa843.js"
   ]
 }

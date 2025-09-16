@@ -94,14 +94,31 @@ export const getUserCurrentPage = async (userId) => {
     const response = await initial.get(request);
     console.log("📥 Received profile:", response.data);
 
-    // Добавляем обязательные поля по умолчанию если их нет
     return {
-      aboutMe: "Not specified",
-      lookingForAJobDescription: "Not specified",
-      lookingForAJob: false,
-      contacts: {},
+      aboutMe: response.data?.aboutMe || "Not specified",
+      lookingForAJobDescription:
+        response.data?.lookingForAJobDescription || "Not specified",
+      lookingForAJob: response.data?.lookingForAJob || false,
+      fullName: response.data?.fullName || "User",
+      userId: response.data?.userId || userId,
+
+      contacts: {
+        github: response.data?.contacts?.github || null,
+        vk: response.data?.contacts?.vk || null,
+        facebook: response.data?.contacts?.facebook || null,
+        instagram: response.data?.contacts?.instagram || null,
+        twitter: response.data?.contacts?.twitter || null,
+        website: response.data?.contacts?.website || null,
+        youtube: response.data?.contacts?.youtube || null,
+        mainLink: response.data?.contacts?.mainLink || null,
+      },
+
+      photos: {
+        small: response.data?.photos?.small || null,
+        large: response.data?.photos?.large || null,
+      },
+
       ...response.data,
-      contacts: response.data.contacts || {},
     };
   } catch (error) {
     console.error("❌ Error fetching profile:", error);

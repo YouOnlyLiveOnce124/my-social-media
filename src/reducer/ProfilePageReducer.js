@@ -16,7 +16,7 @@ const SET_PROFILE_PHOTOS = "SET_PROFILE_PHOTOS";
 const UPDATE_PROFILE_CONTACTS = "UPDATE_PROFILE_CONTACTS";
 
 let initialState = {
-  profile: null, // Оставляем null, но добавляем проверки в компонентах
+  profile: {},
   posts: [
     { id: 1, message: "Hi, how are you", likes: "99" },
     { id: 2, message: "Post 2", likes: "22" },
@@ -26,6 +26,7 @@ let initialState = {
   isFetchingProfile: false,
   isFetchingStatus: false,
 };
+
 let profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case add_post:

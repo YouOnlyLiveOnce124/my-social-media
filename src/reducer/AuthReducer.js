@@ -10,9 +10,9 @@ const SET_USER = "SET-USER-DATA";
 const SET_CAPTCHA_URL = "SET-CAPTCHA-URL";
 
 let initialState = {
-  id: null,
-  email: null,
-  login: null,
+  id: 0,
+  email: "",
+  login: "",
   isAuth: false,
   captchaUrl: null,
 };

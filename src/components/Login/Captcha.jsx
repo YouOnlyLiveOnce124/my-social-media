@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import s from "./Captcha.module.css";
-import { Field } from "redux-form";
-import { FieldValidator } from "../../validators/FieldValidators";
-import { required } from "../../validators/required";
 
-export const Captcha = ({ captchaUrl, onRefreshCaptcha }) => {
+export const Captcha = ({ captchaUrl, onRefreshCaptcha, register, errors }) => {
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   if (!captchaUrl) return null;
@@ -23,7 +20,7 @@ export const Captcha = ({ captchaUrl, onRefreshCaptcha }) => {
         <span className={s.captchaLabel}>Captcha</span>
         <button
           type="button"
-          onClick={onRefreshCaptcha}
+          onClick={handleRefresh}
           className={`${s.refreshButton} ${isRefreshing ? s.refreshing : ""}`}
           title="Refresh captcha"
           disabled={isRefreshing}
@@ -38,15 +35,20 @@ export const Captcha = ({ captchaUrl, onRefreshCaptcha }) => {
         className={`${s.captchaImage} ${isRefreshing ? s.fadeOut : ""}`}
       />
 
-      <Field
-        name="captcha"
-        component={FieldValidator}
+      {/* Заменяем Field на input с register */}
+      <input
+        {...register("captcha", {
+          required: "Captcha is required",
+        })}
         type="text"
         placeholder="Enter captcha text"
-        validate={[required]}
-        typeComponent="input"
         className={s.captchaInput}
       />
+
+      {/* Вывод ошибок captcha */}
+      {errors.captcha && (
+        <div className={s.errorMessage}>⚠️ {errors.captcha.message}</div>
+      )}
     </div>
   );
 };

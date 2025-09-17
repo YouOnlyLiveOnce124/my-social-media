@@ -2,7 +2,11 @@ import React from "react";
 import m from "./SendMessage.module.css";
 import { Field, reduxForm } from "redux-form";
 import { FieldValidator } from "../../../validators/FieldValidators";
-import { maxLength, minValue, required } from "../../../validators/required";
+import {
+  maxLength,
+  minValue,
+  required,
+} from "../../../validators/hookFormValidators";
 
 const SendMessageForm = (props) => {
   const maxLength30 = maxLength(30);

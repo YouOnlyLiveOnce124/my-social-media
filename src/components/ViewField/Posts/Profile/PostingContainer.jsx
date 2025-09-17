@@ -19,6 +19,4 @@ const PostingContainer = () => {
   return <Posting addPost={add} getSybl={get} />;
 };
 
-// const PostingContainer = connect(mapStateToProps, mapDispatchToProps)(Posting);
-
 export default PostingContainer;

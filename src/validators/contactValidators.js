@@ -1,4 +1,4 @@
-import { required, maxLength } from "./required";
+import { required, maxLength } from "./hookFormValidators";
 
 // Валидаторы для разных типов контактов
 export const contactValidators = {

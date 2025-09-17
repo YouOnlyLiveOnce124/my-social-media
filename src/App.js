@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import HeaderContainerComponent from "./components/Header/HeaderContainer";
-import LoginField from "./components/Login/Login";
+import { LoginField } from "./components/Login/Login";
 import React, { lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkInitialized } from "./reducer/AppReducer";
@@ -78,9 +78,9 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Navigate to="/profile" replace />} />
             <Route path="/profile/:userId?" element={<ProfileContainer />} />
-            {/* <Route path="/dialogs/*" element={<DialogsWithSuspense />} /> */}
+            <Route path="/dialogs/*" element={<DialogsWithSuspense />} />
             <Route path="/users/*" element={<UsersContainerWithSuspense />} />
-            {/* <Route path="/login/" element={<LoginField />} /> */}
+            <Route path="/login/" element={<LoginField />} />
             <Route path="/boat/" element={<Boat />} />
             <Route path="/game-2048/" element={<Game2048 />} />
             <Route path="*" element={<div>Page not found</div>} />

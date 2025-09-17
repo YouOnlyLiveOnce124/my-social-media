@@ -1,4 +1,3 @@
-import { stopSubmit } from "redux-form";
 import {
   getAxiosIdEmailLog,
   logOut,
@@ -60,37 +59,18 @@ export const thunkAuthPostUser = (
   rememberMe = false,
   captcha = null
 ) => {
-  return (dispatch) => {
-    postFormData(email, password, rememberMe, captcha).then((data) => {
+  return async (dispatch) => {
+    try {
+      const data = await postFormData(email, password, rememberMe, captcha);
       if (data.resultCode === 0) {
-        dispatch(thunkCreatorLogin());
+        await dispatch(thunkCreatorLogin());
+        return data; // ✅ Успех
       } else {
-        // Если требуется captcha (код ошибки 10)
-        if (data.resultCode === 10) {
-          // Получаем captcha URL
-          getCaptchaUrl().then((captchaData) => {
-            dispatch(setCaptchaUrl(captchaData.url));
-
-            // Показываем ошибку с требованием ввести captcha
-            dispatch(
-              stopSubmit("login", {
-                _error: "Please enter the captcha",
-              })
-            );
-          });
-        } else {
-          // Обычная ошибка
-          dispatch(
-            stopSubmit("login", {
-              _error:
-                data.messages.length > 0
-                  ? data.messages[0]
-                  : "Error, check your values",
-            })
-          );
-        }
+        throw data; // ❌ Ошибка (будет поймана в catch)
       }
-    });
+    } catch (error) {
+      throw error; // Пробрасываем ошибку дальше
+    }
   };
 };
 

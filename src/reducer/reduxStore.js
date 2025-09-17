@@ -4,7 +4,6 @@ import messageReducer from "./MessagePageReducer";
 import usersReducer from "./UsersPageReducer";
 import authReducer from "./AuthReducer";
 import { thunk } from "redux-thunk";
-import { reducer as formReducer } from "redux-form";
 import appReducer from "./AppReducer";
 import { themeReducer } from "./themeReducer";
 import gameReducer from "./GameReducer";
@@ -17,7 +16,7 @@ let reducers = combineReducers({
   app: appReducer,
   theme: themeReducer,
   game2048: gameReducer,
-  form: formReducer,
+  // УДАЛЕНО: form: formReducer,
 });
 
 let mainStore = createStore(reducers, applyMiddleware(thunk));

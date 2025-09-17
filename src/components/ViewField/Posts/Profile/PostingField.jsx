@@ -1,7 +1,11 @@
 import React from "react";
 import s from "./Posting.module.css";
 import { reduxForm, Field } from "redux-form";
-import { maxLength, minValue, required } from "../../../../validators/required";
+import {
+  maxLength,
+  minValue,
+  required,
+} from "../../../../validators/hookFormValidators";
 import { FieldValidator } from "../../../../validators/FieldValidators";
 
 const PostingField = (props) => {

@@ -1,20 +1,17 @@
 import React from "react";
 import s from "./Posting.module.css";
-
-import PostingReduxField from "./PostingField";
+import PostingField from "./PostingField";
 
 const Posting = (props) => {
-  const onSubmit = (values) => {
-    console.log(values.posting);
-    props.addPost(values.posting);
-    values.posting = "";
+  const addPost = (postText) => {
+    props.addPost(postText);
   };
+
   return (
     <div>
       <div className={s.field_div}>
         <h3>My posts</h3>
-
-        <PostingReduxField onSubmit={onSubmit} getSybl={props.getSybl} />
+        <PostingField addPost={addPost} />
       </div>
     </div>
   );

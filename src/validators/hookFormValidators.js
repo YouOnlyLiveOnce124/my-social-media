@@ -8,6 +8,11 @@ export const minLength = (min) => (value) =>
     ? `Must be at least ${min} characters`
     : undefined;
 
+export const minValue = (min) => (value) =>
+  value && value.length < min
+    ? `Must be at least ${min} characters`
+    : undefined;
+
 export const email = (value) =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
     ? "Invalid email address"
@@ -34,6 +39,12 @@ export const hookFormValidators = {
     ...(message && { message }),
   }),
 
+  minValue: (min, message) => ({
+    validate: (value) => minValue(min)(value),
+    ...(message && {
+      message: message || `Must be at least ${min} characters`,
+    }),
+  }),
   minLength: (min, message) => ({
     minLength: {
       value: min,

@@ -1,42 +1,65 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import s from "./Posting.module.css";
-import { reduxForm, Field } from "redux-form";
 import {
+  hookFormValidators,
+  required,
   maxLength,
   minValue,
-  required,
 } from "../../../../validators/hookFormValidators";
-import { FieldValidator } from "../../../../validators/FieldValidators";
 
 const PostingField = (props) => {
-  const maxLength30 = maxLength(30);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    reset,
+  } = useForm({
+    mode: "onChange",
+    defaultValues: {
+      posting: "",
+    },
+  });
 
-  const minLength3 = minValue(3);
+  const onSubmit = (data) => {
+    console.log(data.posting);
+    props.addPost(data.posting);
+    reset(); // Очищаем форму после отправки
+  };
+
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className={s.field_textarea_and_button}>
         <div className={s.textarea}>
-          <Field
-            name="posting"
-            component={FieldValidator}
-            type="text"
+          <textarea
+            {...register("posting", {
+              required: "Post is required",
+              maxLength: {
+                value: 30,
+                message: "Must be 30 characters or less",
+              },
+              minLength: {
+                value: 3,
+                message: "Must be at least 3 characters",
+              },
+            })}
             placeholder="Write something for post"
-            validate={[required, maxLength30, minLength3]}
-            typeComponent="textarea"
-            rows="4" // Добавляем фиксированное количество строк
-            style={{ resize: "vertical" }} // Ограничиваем ресайз
+            rows="4"
+            style={{ resize: "vertical" }}
+            className={errors.posting ? s.errorInput : ""}
           />
+          {errors.posting && (
+            <div className={s.errorMessage}>⚠️ {errors.posting.message}</div>
+          )}
         </div>
         <div className={s.button}>
-          <button>New Post</button>
+          <button type="submit" disabled={!isValid}>
+            New Post
+          </button>
         </div>
       </div>
     </form>
   );
 };
 
-const PostingReduxField = reduxForm({
-  form: "posting",
-})(PostingField);
-
-export default PostingReduxField;
+export default PostingField;

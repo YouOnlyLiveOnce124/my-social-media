@@ -1,14 +1,19 @@
 import m from "./Dialogs.module.css";
 import DialogsWithFriend from "./Dialog/DialogsWithFriend";
 import Messages from "./Messages/Messages";
-
-import SendMessageContainer from "./SendMessage/SendMessageContainer";
-
-import { useSelector } from "react-redux";
+import SendMessage from "./SendMessage/SendMessage"; // Прямой импорт
+import { useSelector, useDispatch } from "react-redux";
 import Loader from "../GeneralItems/Loader";
+import { addMyMessage } from "../../reducer/MessagePageReducer";
 
 const Dialogs = () => {
   const state = useSelector((state) => state.dialogsPage);
+  const dispatch = useDispatch();
+
+  const addMessage = (messageText) => {
+    dispatch(addMyMessage(messageText));
+  };
+
   if (!state.friends || !state.messages || !state.myMessage) {
     return (
       <div>
@@ -16,6 +21,7 @@ const Dialogs = () => {
       </div>
     );
   }
+
   let processedArrDataFriend = (state?.friends || []).map((dialog) => (
     <DialogsWithFriend
       name={dialog.name}
@@ -49,9 +55,10 @@ const Dialogs = () => {
       </div>
 
       <div className={m.send_message}>
-        <SendMessageContainer />
+        <SendMessage addMyMessage={addMessage} />
       </div>
     </div>
   );
 };
+
 export default Dialogs;

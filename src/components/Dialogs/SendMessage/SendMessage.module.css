@@ -21,3 +21,12 @@
 .div_button {
   padding: 4px;
 }
+.errorInput {
+  border: 2px solid red !important;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}

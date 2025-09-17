@@ -26,6 +26,7 @@ export const LoginField = () => {
     reset,
     watch,
     trigger,
+    clearErrors,
   } = useForm({
     mode: "onChange",
     defaultValues: {
@@ -43,21 +44,26 @@ export const LoginField = () => {
   const onSubmit = async (formData) => {
     const { email, password, rememberMe = false, captcha } = formData;
 
-    try {
-      await dispatch(
-        thunkAuthPostUser(email, password, rememberMe, captcha)
-      ).unwrap();
-    } catch (error) {
-      if (error.resultCode === 10) {
+    const result = await dispatch(
+      thunkAuthPostUser(email, password, rememberMe, captcha)
+    );
+
+    if (result.success) {
+      // ✅ Успешная авторизация - редирект произойдет автоматически
+      console.log("Login successful!");
+    } else {
+      // ❌ Ошибка авторизации
+      if (result.resultCode === 10) {
+        // Captcha required
         handleRefreshCaptcha();
         setError("root", {
           type: "manual",
-          message: "Please enter the captcha",
+          message: result.error,
         });
       } else {
         setError("root", {
           type: "manual",
-          message: error.messages?.[0] || "Error, check your values",
+          message: result.error,
         });
       }
     }
@@ -73,6 +79,7 @@ export const LoginField = () => {
   };
 
   const handleInputChange = async (fieldName) => {
+    clearErrors();
     await trigger(fieldName);
   };
 
@@ -166,7 +173,7 @@ export const LoginField = () => {
         <div className={s.buttonsGroup}>
           <button
             type="submit"
-            disabled={!isValid || isSubmitting}
+            disabled={isSubmitting}
             className={s.submitButton}
           >
             {isSubmitting ? "Logging in..." : "Login"}

@@ -62,14 +62,37 @@ export const thunkAuthPostUser = (
   return async (dispatch) => {
     try {
       const data = await postFormData(email, password, rememberMe, captcha);
+
       if (data.resultCode === 0) {
+        // ✅ Успешный логин
         await dispatch(thunkCreatorLogin());
-        return data; // ✅ Успех
+        return { success: true }; // Возвращаем успех
       } else {
-        throw data; // ❌ Ошибка (будет поймана в catch)
+        // ❌ Ошибка логина
+        if (data.resultCode === 10) {
+          // Captcha required
+          const captchaData = await getCaptchaUrl();
+          dispatch(setCaptchaUrl(captchaData.url));
+          return {
+            success: false,
+            error: "Please enter the captcha",
+            resultCode: 10,
+          };
+        } else {
+          // Другие ошибки
+          return {
+            success: false,
+            error: data.messages?.[0] || "Error, check your values",
+            resultCode: data.resultCode,
+          };
+        }
       }
     } catch (error) {
-      throw error; // Пробрасываем ошибку дальше
+      return {
+        success: false,
+        error: "Network error",
+        resultCode: -1,
+      };
     }
   };
 };

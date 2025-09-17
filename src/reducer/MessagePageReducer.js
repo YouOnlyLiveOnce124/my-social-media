@@ -44,21 +44,7 @@ let initialState = {
   ],
 };
 
-let messageReducer = (state = initialState, action) => {
-  //----------------- запуск для публикации постов -------------------
-  //----------------- запуск для публикации сообщений -------------------
-  //   if (action.type === add_my_message) {
-  //     let newMyMessage = {
-  //       message: state.sendMessage,
-  //     };
-  //     state.myMessage.push(newMyMessage);
-  //     state.sendMessage = "";
-  //   } else if (action.type === get_symbol_for_add_message) {
-  //     state.sendMessage = action.newText;
-  //     console.log(state.sendMessage);
-  //   }
-  //----------------- запуск для публикации сообщений -------------------
-
+const messageReducer = (state = initialState, action) => {
   switch (action.type) {
     case add_my_message:
       return {
@@ -80,8 +66,6 @@ let messageReducer = (state = initialState, action) => {
     default:
       return state;
   }
-
-  //   return state;
 };
 
 export const addMyMessage = (sendMessage) => ({
